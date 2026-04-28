@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>ساعت دیجیتال من</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      font-family: 'Vazir', Tahoma, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .saat-box {
+      background: rgba(0,0,0,0.7);
+      border-radius: 40px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0,255,255,0.5);
+    }
+    #saat {
+      font-size: 70px;
+      color: #0ff;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+    #tarikh {
+      font-size: 24px;
+      color: #fff;
+      margin-top: 15px;
+    }
+    h1 {
+      color: white;
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+<div class="saat-box">
+  <h1>🕰️ ساعت دیجیتال</h1>
+  <div id="saat">--:--:--</div>
+  <div id="tarikh">----/--/--</div>
+</div>
+
+<script>
+  function updateTime() {
+    let now = new Date();
+    let hours = now.getHours().toString().padStart(2, '0');
+    let minutes = now.getMinutes().toString().padStart(2, '0');
+    let seconds = now.getSeconds().toString().padStart(2, '0');
+    document.getElementById("saat").innerHTML = hours + ":" + minutes + ":" + seconds;
+    
+    let year = now.getFullYear();
+    let month = (now.getMonth() + 1).toString().padStart(2, '0');
+    let day = now.getDate().toString().padStart(2, '0');
+    document.getElementById("tarikh").innerHTML = year + "/" + month + "/" + day;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+</script>
+</body>
+</html>
